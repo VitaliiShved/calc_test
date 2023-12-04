@@ -6,6 +6,8 @@ window.addEventListener('load', function(){
     let btnRun = document.querySelector('.btnRun');
     let result = document.querySelector('.result');
 
+    let blockbtnRun = false;
+
     btnRun.addEventListener('click', function(){
         let total;
         if (option.value === "+"){
@@ -20,6 +22,19 @@ window.addEventListener('load', function(){
             result.innerHTML = 'Помилка';
         }
         result.innerHTML = total;
+
+        blockbtnRun = true;
+        btnRun.disabled = true;
+
     });
+
+    inp1.addEventListener('input', function() {
+        btnRun.disabled = !blockbtnRun && inp1.value.trim() === '';
+    });
+
+    inp2.addEventListener('input', function() {
+        btnRun.disabled = !blockbtnRun && inp2.value.trim() === '';
+    });
+    
 });
 
